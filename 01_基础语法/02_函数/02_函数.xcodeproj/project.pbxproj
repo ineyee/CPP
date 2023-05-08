@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D92EA692A08A10200034A41 /* 01_函数重载.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D92EA682A08A10200034A41 /* 01_函数重载.cpp */; };
+		7D92EA6B2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D92EA6A2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		7D92EA5E2A08A0B100034A41 /* 02_函数 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "02_函数"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92EA682A08A10200034A41 /* 01_函数重载.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "01_函数重载.cpp"; sourceTree = "<group>"; };
+		7D92EA6A2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "02_函数的必选参数和可选参数.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				7D92EA682A08A10200034A41 /* 01_函数重载.cpp */,
+				7D92EA6A2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp */,
 			);
 			path = "02_函数";
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D92EA692A08A10200034A41 /* 01_函数重载.cpp in Sources */,
+				7D92EA6B2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
