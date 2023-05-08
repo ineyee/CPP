@@ -23,10 +23,10 @@ double add(double d1, double d2) {
 // 这可以通过汇编来验证
 // 可见C里函数的唯一符号只跟函数名有关，而C++里函数的唯一符号则跟函数名和函数参数都有关，这也是为什么C不支持函数重载而C++支持函数重载的原因
 
-int main() {
-    cout << add(10, 20) << endl;
-    cout << add(10, 20, 30) << endl;
-    cout << add(10.10, 20.20) << endl;
-    
-    return 0;
-}
+//int main() {
+//    cout << add(10, 20) << endl; // 30
+//    cout << add(10, 20, 30) << endl; // 60
+//    cout << add(10.10, 20.20) << endl; // 30.3
+//
+//    return 0;
+//}
