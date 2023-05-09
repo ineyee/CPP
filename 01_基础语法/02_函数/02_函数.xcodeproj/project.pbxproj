@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D92EA692A08A10200034A41 /* 01_函数重载.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D92EA682A08A10200034A41 /* 01_函数重载.cpp */; };
 		7D92EA6B2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D92EA6A2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp */; };
+		7D92EA702A09DE0F00034A41 /* 04_内联函数.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D92EA6F2A09DE0F00034A41 /* 04_内联函数.cpp */; };
 		7DA224032A09C44400014B25 /* math.c in Sources */ = {isa = PBXBuildFile; fileRef = 7DA224012A09C44400014B25 /* math.c */; };
 		7DA224062A09C46300014B25 /* 03_externC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7DA224042A09C46300014B25 /* 03_externC.cpp */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		7D92EA5E2A08A0B100034A41 /* 02_函数 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "02_函数"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D92EA682A08A10200034A41 /* 01_函数重载.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "01_函数重载.cpp"; sourceTree = "<group>"; };
 		7D92EA6A2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "02_函数的必选参数和可选参数.cpp"; sourceTree = "<group>"; };
+		7D92EA6F2A09DE0F00034A41 /* 04_内联函数.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "04_内联函数.cpp"; sourceTree = "<group>"; };
 		7DA224012A09C44400014B25 /* math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = math.c; sourceTree = "<group>"; };
 		7DA224022A09C44400014B25 /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
 		7DA224042A09C46300014B25 /* 03_externC.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 03_externC.cpp; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				7DA224042A09C46300014B25 /* 03_externC.cpp */,
 				7DA224022A09C44400014B25 /* math.h */,
 				7DA224012A09C44400014B25 /* math.c */,
+				7D92EA6F2A09DE0F00034A41 /* 04_内联函数.cpp */,
 			);
 			path = "02_函数";
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			files = (
 				7D92EA692A08A10200034A41 /* 01_函数重载.cpp in Sources */,
 				7DA224032A09C44400014B25 /* math.c in Sources */,
+				7D92EA702A09DE0F00034A41 /* 04_内联函数.cpp in Sources */,
 				7DA224062A09C46300014B25 /* 03_externC.cpp in Sources */,
 				7D92EA6B2A08A24000034A41 /* 02_函数的必选参数和可选参数.cpp in Sources */,
 			);

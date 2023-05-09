@@ -8,10 +8,10 @@ using namespace std;
 // 而被extern "C"修饰的函数则会被强制按照C的编译规则去编译
 // 比如下面两个函数，因为当前源文件是个.cpp文件，所以是按照C++的编译规则去编译，因此就能编译通过，因为C++支持函数重载
 //int add(int i1, int i2);
-//int add(double d1, double d2);
+//double add(double d1, double d2);
 // 而下面两个函数就无法编译通过了，因为虽然当前源文件是个.cpp文件，但是这俩函数被extern "C"修饰了，所以会被强制按照C的编译规则去编译，C不支持函数重载
 //extern "C" int add(int i1, int i2);
-//extern "C" int add(double d1, double d2);
+//extern "C" double add(double d1, double d2);
 
 // 2、怎么使用extern "C"？
 // （1）我们可以用extern "C"修饰每一个函数，也可以用extern "C" { ... }修饰一堆函数
@@ -47,6 +47,6 @@ using namespace std;
 // 具体的实现见math.h
 // 总的来说，extern "C"主要使用在C和C++混编的场景，即我们编写了一个C库，如果想让它在C和C++的代码里能都能被正常调用，那就得用extern "C"修饰那些库函数
 
-int main() {
-    return 0;
-}
+//int main() {
+//    return 0;
+//}
