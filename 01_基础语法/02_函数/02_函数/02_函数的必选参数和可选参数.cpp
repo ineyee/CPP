@@ -32,12 +32,12 @@ int sub4(int i1, int i2) {
 // 没什么高大上的，其实就是在函数调用时，如果可选参数不传的话就默认传一个默认值而已
 // 这可以通过汇编来验证
 
-int main() {
-    cout << sub(10, 20) << endl; // -10
-    cout << sub1() << endl; // 0
-    cout << sub2(10) << endl; // 10
-    
-    cout << sub4(10) << endl; // 10
-    
-    return 0;
-}
+//int main() {
+//    cout << sub(10, 20) << endl; // -10
+//    cout << sub1() << endl; // 0
+//    cout << sub2(10) << endl; // 10
+//
+//    cout << sub4(10) << endl; // 10
+//
+//    return 0;
+//}
