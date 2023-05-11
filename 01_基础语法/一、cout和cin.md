@@ -1,3 +1,8 @@
+## 一、cout和cin
+
+cout和cin一般用来进行控制台的输出和输入，这两个函数都存在于iostream库里。
+
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -14,3 +19,4 @@ int main() {
     
     return 0;
 }
+```
