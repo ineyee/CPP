@@ -10,8 +10,9 @@
 using namespace std;
 
 int main() {
-    string str = "123";
-    cout << str << endl; // 123
+    string str = "";
+    string str1 = "123";
+    cout << str1 << endl; // 123
     
     return 0;
 }
@@ -55,10 +56,10 @@ int main() {
 using namespace std;
 
 int main() {
-    string str = "123";
-    string str1 = "";
-    cout << str.empty() << endl; // 0
-    cout << str1.empty() << endl; // 1
+    string str = "";
+    string str1 = "123";
+    cout << str.empty() << endl; // 1
+    cout << str1.empty() << endl; // 0
     
     return 0;
 }
