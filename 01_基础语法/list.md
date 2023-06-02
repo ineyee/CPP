@@ -1,81 +1,70 @@
-## std::vector
+## std::list
 
 #### 1、基本使用
 
-###### 1.1 动态数组的声明及初始化
+###### 1.1 双向链表的声明及初始化
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = {};
-    vector<int> vec1 = { 1, 2, 3 };
+    list<int> l = {};
+    list<int> l1 = { 1, 2, 3 };
     
     return 0;
 }
 ```
 
-###### 1.2 获取动态数组的长度
+###### 1.2 获取双向链表的长度
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec.size() << endl; // 3
+    list<int> l = { 1, 2, 3 };
+    cout << l.size() << endl; // 3
     
     return 0;
 }
 ```
 
-###### 1.3 获取动态数组的容量
+###### ~~1.3 获取双向链表的容量~~
+
+插入一个节点长度就加1，删除一个节点长度就减1，也就是说双向链表的长度和容量总是相等的，所以去掉了容量的概念。
+
+###### 1.4 判断双向链表是不是空
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec.capacity() << endl; // 3
+    list<int> l = {};
+    list<int> l1 = { 1, 2, 3 };
+    cout << l.empty() << endl; // 1
+    cout << l1.empty() << endl; // 0
     
     return 0;
 }
 ```
 
-###### 1.4 判断动态数组是不是空
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = {};
-    vector<int> vec1 = { 1, 2, 3 };
-    cout << vec.empty() << endl; // 1
-    cout << vec1.empty() << endl; // 0
-    
-    return 0;
-}
-```
-
-###### 1.5 动态数组增
+###### 1.5 双向链表增
 
 * 尾部增
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.push_back(4);
+    list<int> l = { 1, 2, 3 };
+    l.push_back(4);
     
     return 0;
 }
@@ -85,13 +74,12 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    // 传迭代器而非下标
-    vec.insert(vec.begin(), 4);
+    list<int> l = { 1, 2, 3 };
+    l.push_front(4);
     
     return 0;
 }
@@ -101,13 +89,15 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    // 传迭代器而非下标
-    vec.insert(vec.begin() + 1, 4);
+    list<int> l = { 1, 2, 3 };
+    // 传迭代器而非下标，但是双向链表不能直接像动态数组那样迭代器做算数运算，必须像下面这样偏移
+    list<int>::iterator it = l.begin();
+    advance(it, 1);
+    l.insert(it, 4);
     
     return 0;
 }
@@ -117,30 +107,30 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.insert(vec.end(), { 4, 5, 6 });
-
+    list<int> l = { 1, 2, 3 };
+    // 传迭代器而非下标
+    l.insert(l.end(), { 4, 5, 6 });
+    
     return 0;
 }
 ```
 
-###### 1.6 动态数组删
+###### 1.6 双向链表删
 
 * 尾部删
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.pop_back();
+    list<int> l = { 1, 2, 3 };
+    l.pop_back();
     
     return 0;
 }
@@ -150,14 +140,13 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.erase(vec.begin());
-    
+    list<int> l = { 1, 2, 3 };
+    l.pop_front();
+
     return 0;
 }
 ```
@@ -166,13 +155,15 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.erase(vec.begin() + 1);
+    list<int> l = { 1, 2, 3 };
+    // 传迭代器而非下标，但是双向链表不能直接像动态数组那样迭代器做算数运算，必须像下面这样偏移
+    list<int>::iterator it = l.begin();
+    advance(it, 1);
+    l.erase(it);
     
     return 0;
 }
@@ -182,64 +173,109 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.clear();
-
-    return 0;
-}
-```
-
-###### 1.7 动态数组改
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec[0] = 4;
+    list<int> l = { 1, 2, 3 };
+    l.clear();
     
     return 0;
 }
 ```
 
-###### 1.8 动态数组查
+###### 1.7 双向链表改
 
-* 查某个下标处的元素
+双向链表没有重载[]运算符，所以我们没法像动态数组那样通过下标来修改某个位置的值，只能通过迭代器来进行修改。
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec[0] << endl; // 1
+    list<int> l = { 1, 2, 3 };
+
+    // 使用迭代器定位到要修改的位置
+    auto it = l.begin();
+    advance(it, 0);
+
+    // 使用迭代器修改第一个节点的值
+    *it = 4;
+
+    return 0;
+}
+```
+
+###### 1.8 双向链表查
+
+* 尾部查
+
+```c++
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> l = { 1, 2, 3 };
+    cout << l.back() << endl; // 3
     
     return 0;
 }
 ```
 
-* 查某个元素的下标（其实查某个元素的迭代器更有意义，因为动态数组的很多操作都是基于迭代器而非下标）
+* 头部查
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 6, 1, 2, 3, 6 };
+    list<int> l = { 1, 2, 3 };
+    cout << l.front() << endl; // 1
+    
+    return 0;
+}
+```
+
+* 中间查
+
+只能通过迭代器来进行查找。
+
+```c++
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> l = { 1, 2, 3 };
+
+    // 使用迭代器定位到要查找的位置
+    auto it = l.begin();
+    advance(it, 0);
+
+    // 使用迭代器获取第一个节点的值
+    int value = *it;
+
+    return 0;
+}
+```
+
+* 查某个元素的迭代器
+
+```c++
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main() {
+    list<int> l = { 6, 1, 2, 3, 6 };
     // 在[begin, end)这个区间内，正序查元素6的迭代器
-    vector<int>::iterator it = find(vec.begin(), vec.end(), 6);
-    if (it != vec.end()) {
-        // 找到了该元素，获取下标
-        int index = it - vec.begin();
-        cout << index << endl; // 0
+    list<int>::iterator it = find(l.begin(), l.end(), 6);
+    if (it != l.end()) {
+        // 找到了该元素
+        cout << "找到了" << endl; // 找到了
     } else {
         // 没找到该元素
         cout << "没找到" << endl;
@@ -251,17 +287,16 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 6, 1, 2, 3, 6 };
+    list<int> l = { 6, 1, 2, 3, 6 };
     // 在[begin, end)这个区间内，倒序查元素6的迭代器
-    vector<int>::reverse_iterator it = find(vec.rbegin(), vec.rend(), 6);
-    if (it != vec.rend()) {
-        // 找到了该元素，获取下标
-        int index = vec.rend() - it - 1;
-        cout << index << endl; // 4
+    list<int>::reverse_iterator it = find(l.rbegin(), l.rend(), 6);
+    if (it != l.rend()) {
+        // 找到了该元素
+        cout << "找到了" << endl; // 找到了
     } else {
         // 没找到该元素
         cout << "没找到" << endl;
@@ -271,67 +306,21 @@ int main() {
 }
 ```
 
-###### 1.9 动态数组的遍历
-
-* for循环遍历法（推荐）
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = { 1, 2, 3 };
-  
-    // 正序遍历
-    for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i] << endl;
-    }
-    
-    // 控制台打印：
-    // 1
-    // 2
-    // 3
-    
-    return 0;
-}
-```
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = { 1, 2, 3 };
-  
-    // 倒序遍历
-    for (int i = vec.size() - 1; i >= 0; i--) {
-        cout << vec[i] << endl;
-    }
-    
-    // 控制台打印：
-    // 3
-    // 2
-    // 1
-    
-    return 0;
-}
-```
+###### 1.9 双向链表的遍历
 
 * 迭代器遍历法
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  
+    list<int> l = { 1, 2, 3 };
+    
     // 正序遍历
-    vector<int>::iterator it = vec.begin();
-    while (it != vec.end()) {
+    list<int>::iterator it = l.begin();
+    while (it != l.end()) {
         cout << *it << endl;
         it++;
     }
@@ -347,15 +336,15 @@ int main() {
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  
+    list<int> l = { 1, 2, 3 };
+    
     // 倒序遍历
-    vector<int>::reverse_iterator it = vec.rbegin();
-    while (it != vec.rend()) {
+    list<int>::reverse_iterator it = l.rbegin();
+    while (it != l.rend()) {
         cout << *it << endl;
         it++;
     }
@@ -369,17 +358,17 @@ int main() {
 }
 ```
 
-* 便捷for循环遍历法
+* 便捷for循环遍历法（推荐）
 
 ```c++
 #include <iostream>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  
-    for (int i : vec) {
+    list<int> l = { 1, 2, 3 };
+    
+    for (int i : l) {
         cout << i << endl;
     }
     
