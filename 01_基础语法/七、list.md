@@ -1,4 +1,4 @@
-## std::list
+## 七、std::list
 
 #### 1、基本使用
 
@@ -34,7 +34,7 @@ int main() {
 
 ###### ~~1.3 获取双向链表的容量~~
 
-插入一个节点长度就加1，删除一个节点长度就减1，也就是说双向链表的长度和容量总是相等的，所以去掉了容量的概念。
+插入一个节点长度就加1，删除一个节点长度就减1，也就是说双向链表的长度和容量总是相等的，所以没有容量的概念。
 
 ###### 1.4 判断双向链表是不是空
 
@@ -87,6 +87,8 @@ int main() {
 
 * 中间增
 
+传迭代器而非下标，但是双向链表的迭代器不能像动态数组的迭代器那样直接做算数运算，必须用advance(...)函数来算偏移。
+
 ```c++
 #include <iostream>
 #include <list>
@@ -94,16 +96,17 @@ using namespace std;
 
 int main() {
     list<int> l = { 1, 2, 3 };
-    // 传迭代器而非下标，但是双向链表不能直接像动态数组那样迭代器做算数运算，必须像下面这样偏移
+  
     list<int>::iterator it = l.begin();
     advance(it, 1);
+  
     l.insert(it, 4);
     
     return 0;
 }
 ```
 
-* 任意位置一次性增多个元素
+* 一次性增多个元素
 
 ```c++
 #include <iostream>
@@ -112,7 +115,6 @@ using namespace std;
 
 int main() {
     list<int> l = { 1, 2, 3 };
-    // 传迭代器而非下标
     l.insert(l.end(), { 4, 5, 6 });
     
     return 0;
@@ -153,6 +155,8 @@ int main() {
 
 * 中间删
 
+传迭代器而非下标，但是双向链表的迭代器不能像动态数组的迭代器那样直接做算数运算，必须用advance(...)函数来算偏移。
+
 ```c++
 #include <iostream>
 #include <list>
@@ -160,9 +164,10 @@ using namespace std;
 
 int main() {
     list<int> l = { 1, 2, 3 };
-    // 传迭代器而非下标，但是双向链表不能直接像动态数组那样迭代器做算数运算，必须像下面这样偏移
+  
     list<int>::iterator it = l.begin();
     advance(it, 1);
+  
     l.erase(it);
     
     return 0;
@@ -275,10 +280,10 @@ int main() {
     list<int>::iterator it = find(l.begin(), l.end(), 6);
     if (it != l.end()) {
         // 找到了该元素
-        cout << "找到了" << endl; // 找到了
+        cout << "找到了该元素" << endl; // 找到了该元素
     } else {
         // 没找到该元素
-        cout << "没找到" << endl;
+        cout << "没找到该元素" << endl;
     }
 
     return 0;
@@ -296,10 +301,10 @@ int main() {
     list<int>::reverse_iterator it = find(l.rbegin(), l.rend(), 6);
     if (it != l.rend()) {
         // 找到了该元素
-        cout << "找到了" << endl; // 找到了
+        cout << "找到了该元素" << endl; // 找到了该元素
     } else {
         // 没找到该元素
-        cout << "没找到" << endl;
+        cout << "没找到该元素" << endl;
     }
 
     return 0;
@@ -468,4 +473,4 @@ int main() {
 * 其它性能
   * list频繁地删除和增加元素会导致频繁地申请和销毁堆内存，因为每一个节点都是一个对象，但它是用多少申请多少，不浪费内存，而vector虽然不会频繁申请和销毁堆内存，但可能会造成内存浪费
 
-所以总体来讲，vector的改查效率更高，list的增删效率更高，它俩是两个互补的数据结构。实际开发中，如果是改查操作比较多则优先选择vector，增删操作比较多则优先选择list，两者互为补充。
+所以总体来讲，动态数组的改查效率更高，双向链表的增删效率更高，它俩是两个互补的数据结构。实际开发中，如果是改查操作比较多则优先选择动态数组，增删操作比较多则优先选择双向链表，两者互为补充。
