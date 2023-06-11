@@ -376,15 +376,15 @@ int main() {
   using namespace std;
   
   int main() {
-      vector<int> vec = { 1, 2, 3 };
-      cout << vec.capacity() << endl; // 3
+      vector<int> v = { 1, 2, 3 };
+      cout << v.capacity() << endl; // 3
       
-      vector<int>::iterator it = vec.begin();
+      vector<int>::iterator it = v.begin();
       
-      vec.push_back(4);
-      cout << vec.capacity() << endl; // 6
+      v.push_back(4);
+      cout << v.capacity() << endl; // 6
       
-      while (it != vec.end()) {
+      while (it != v.end()) {
           cout << *it << endl;
           it++;
       }
@@ -403,13 +403,13 @@ int main() {
   using namespace std;
   
   int main() {
-      vector<int> vec = { 1, 2, 3 };
-      cout << vec.capacity() << endl; // 3
-      vec.push_back(4); // 增加完再调用vec.begin()
-      cout << vec.capacity() << endl; // 6
+      vector<int> v = { 1, 2, 3 };
+      cout << v.capacity() << endl; // 3
+      v.push_back(4); // 增加完再调用vec.begin()
+      cout << v.capacity() << endl; // 6
       
-      vector<int>::iterator it = vec.begin();
-      while (it != vec.end()) {
+      vector<int>::iterator it = v.begin();
+      while (it != v.end()) {
           cout << *it << endl;
           it++;
       }
@@ -434,18 +434,18 @@ int main() {
   using namespace std;
   
   int main() {
-      vector<int> vec = { 1, 3, 5, 2, 4, 6 };
+      vector<int> v = { 1, 3, 5, 2, 4, 6 };
       
-      vector<int>::iterator it = vec.begin();
-      while (it != vec.end()) {
+      vector<int>::iterator it = v.begin();
+      while (it != v.end()) {
           if ((*it & 1) != 0) {
-              vec.erase(it);
+              v.erase(it);
           }
           it++;
       }
       
-      for (int i = 0; i < vec.size(); i++) {
-          cout << vec[i] << endl;
+      for (int i = 0; i < v.size(); i++) {
+          cout << v[i] << endl;
       }
        
       // 控制台打印：
@@ -466,19 +466,19 @@ int main() {
   using namespace std;
   
   int main() {
-      vector<int> vec = { 1, 3, 5, 2, 4, 6 };
+      vector<int> v = { 1, 3, 5, 2, 4, 6 };
       
-      vector<int>::iterator it = vec.begin();
-      while (it != vec.end()) {
+      vector<int>::iterator it = v.begin();
+      while (it != v.end()) {
           if ((*it & 1) != 0) { // 要删除的情况不自增
-              it = vec.erase(it); // 其实erase(...)会返回被删除元素后面的元素新位置的迭代器，比如这里删除1后，1后面的元素3就排到了下标为0 的位置，erase(...)会返回3的迭代器，这种情况下我们不让it自增，指向3就可以了
+              it = v.erase(it); // 其实erase(...)会返回被删除元素后面的元素新位置的迭代器，比如这里删除1后，1后面的元素3就排到了下标为0 的位置，erase(...)会返回3的迭代器，这种情况下我们不让it自增，指向3就可以了
           } else { // 不删除的情况才自增
               it++;
           }
       }
       
-      for (int i = 0; i < vec.size(); i++) {
-          cout << vec[i] << endl;
+      for (int i = 0; i < v.size(); i++) {
+          cout << v[i] << endl;
       }
        
       // 控制台打印：
