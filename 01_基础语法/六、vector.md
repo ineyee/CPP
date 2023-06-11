@@ -1,4 +1,4 @@
-## std::vector
+## 六、std::vector
 
 #### 1、基本使用
 
@@ -10,8 +10,8 @@
 using namespace std;
 
 int main() {
-    vector<int> vec = {};
-    vector<int> vec1 = { 1, 2, 3 };
+    vector<int> v = {};
+    vector<int> v1 = { 1, 2, 3 };
     
     return 0;
 }
@@ -25,8 +25,8 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec.size() << endl; // 3
+    vector<int> v = { 1, 2, 3 };
+    cout << v.size() << endl; // 3
     
     return 0;
 }
@@ -40,8 +40,8 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec.capacity() << endl; // 3
+    vector<int> v = { 1, 2, 3 };
+    cout << v.capacity() << endl; // 3
     
     return 0;
 }
@@ -55,10 +55,10 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = {};
-    vector<int> vec1 = { 1, 2, 3 };
-    cout << vec.empty() << endl; // 1
-    cout << vec1.empty() << endl; // 0
+    vector<int> v = {};
+    vector<int> v1 = { 1, 2, 3 };
+    cout << v.empty() << endl; // 1
+    cout << v1.empty() << endl; // 0
     
     return 0;
 }
@@ -74,14 +74,16 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.push_back(4);
+    vector<int> v = { 1, 2, 3 };
+    v.push_back(4);
     
     return 0;
 }
 ```
 
-* 头部增
+* 头部增、中间增
+
+传迭代器、迭代器 + 偏移量而非下标。
 
 ```c++
 #include <iostream>
@@ -89,15 +91,16 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    // 传迭代器而非下标
-    vec.insert(vec.begin(), 4);
+    vector<int> v = { 1, 2, 3 };
+    
+    v.insert(v.begin(), 4);
+    v.insert(v.begin() + 1, 4);
     
     return 0;
 }
 ```
 
-* 中间增
+* 一次性增多个元素
 
 ```c++
 #include <iostream>
@@ -105,25 +108,8 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    // 传迭代器而非下标
-    vec.insert(vec.begin() + 1, 4);
-    
-    return 0;
-}
-```
-
-* 任意位置一次性增多个元素
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.insert(vec.end(), { 4, 5, 6 });
+    vector<int> v = { 1, 2, 3 };
+    v.insert(v.end(), { 4, 5, 6 });
 
     return 0;
 }
@@ -139,14 +125,16 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.pop_back();
+    vector<int> v = { 1, 2, 3 };
+    v.pop_back();
     
     return 0;
 }
 ```
 
-* 头部删
+* 头部删、中间删
+
+传迭代器、迭代器 + 偏移量而非下标。
 
 ```c++
 #include <iostream>
@@ -154,25 +142,10 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.erase(vec.begin());
+    vector<int> v = { 1, 2, 3 };
     
-    return 0;
-}
-```
-
-* 中间删
-
-```c++
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main() {
-    vector<int> vec = { 1, 2, 3 };
-  	// 传迭代器而非下标
-    vec.erase(vec.begin() + 1);
+    v.erase(v.begin());
+    v.erase(v.begin() + 1);
     
     return 0;
 }
@@ -186,8 +159,8 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec.clear();
+    vector<int> v = { 1, 2, 3 };
+    v.clear();
 
     return 0;
 }
@@ -201,8 +174,8 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    vec[0] = 4;
+    vector<int> v = { 1, 2, 3 };
+    v[0] = 4;
     
     return 0;
 }
@@ -218,14 +191,14 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
-    cout << vec[0] << endl; // 1
+    vector<int> v = { 1, 2, 3 };
+    cout << v[0] << endl; // 1
     
     return 0;
 }
 ```
 
-* 查某个元素的下标（其实查某个元素的迭代器更有意义，因为动态数组的很多操作都是基于迭代器而非下标）
+* 查某个元素的迭代器（查某个元素的迭代器比查某个元素的下标更有意义，因为vector的很多操作都是基于迭代器而非下标）
 
 ```c++
 #include <iostream>
@@ -233,16 +206,15 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 6, 1, 2, 3, 6 };
+    vector<int> v = { 6, 1, 2, 3, 6 };
     // 在[begin, end)这个区间内，正序查元素6的迭代器
-    vector<int>::iterator it = find(vec.begin(), vec.end(), 6);
-    if (it != vec.end()) {
-        // 找到了该元素，获取下标
-        int index = it - vec.begin();
-        cout << index << endl; // 0
+    vector<int>::iterator it = find(v.begin(), v.end(), 6);
+    if (it != v.end()) {
+        // 找到了该元素
+        cout << "找到了该元素" << endl; // 找到了该元素
     } else {
         // 没找到该元素
-        cout << "没找到" << endl;
+        cout << "没找到该元素" << endl;
     }
 
     return 0;
@@ -255,16 +227,15 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 6, 1, 2, 3, 6 };
+    vector<int> v = { 6, 1, 2, 3, 6 };
     // 在[begin, end)这个区间内，倒序查元素6的迭代器
-    vector<int>::reverse_iterator it = find(vec.rbegin(), vec.rend(), 6);
-    if (it != vec.rend()) {
-        // 找到了该元素，获取下标
-        int index = vec.rend() - it - 1;
-        cout << index << endl; // 4
+    vector<int>::reverse_iterator it = find(v.rbegin(), v.rend(), 6);
+    if (it != v.rend()) {
+        // 找到了该元素
+        cout << "找到了该元素" << endl; // 找到了该元素
     } else {
         // 没找到该元素
-        cout << "没找到" << endl;
+        cout << "没找到该元素" << endl;
     }
 
     return 0;
@@ -281,11 +252,11 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
+    vector<int> v = { 1, 2, 3 };
   
     // 正序遍历
-    for (int i = 0; i < vec.size(); i++) {
-        cout << vec[i] << endl;
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << endl;
     }
     
     // 控制台打印：
@@ -303,11 +274,11 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
+    vector<int> v = { 1, 2, 3 };
   
     // 倒序遍历
-    for (int i = vec.size() - 1; i >= 0; i--) {
-        cout << vec[i] << endl;
+    for (int i = v.size() - 1; i >= 0; i--) {
+        cout << v[i] << endl;
     }
     
     // 控制台打印：
@@ -327,11 +298,11 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
+    vector<int> v = { 1, 2, 3 };
   
     // 正序遍历
-    vector<int>::iterator it = vec.begin();
-    while (it != vec.end()) {
+    vector<int>::iterator it = v.begin();
+    while (it != v.end()) {
         cout << *it << endl;
         it++;
     }
@@ -346,16 +317,17 @@ int main() {
 ```
 
 ```c++
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
+    vector<int> v = { 1, 2, 3 };
   
     // 倒序遍历
-    vector<int>::reverse_iterator it = vec.rbegin();
-    while (it != vec.rend()) {
+    vector<int>::reverse_iterator it = v.rbegin();
+    while (it != v.rend()) {
         cout << *it << endl;
         it++;
     }
@@ -377,9 +349,9 @@ int main() {
 using namespace std;
 
 int main() {
-    vector<int> vec = { 1, 2, 3 };
+    vector<int> v = { 1, 2, 3 };
   
-    for (int i : vec) {
+    for (int i : v) {
         cout << i << endl;
     }
     

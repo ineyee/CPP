@@ -1,4 +1,4 @@
-## std:string
+## 五、std::string
 
 #### 1、基本使用
 
@@ -65,41 +65,43 @@ int main() {
 }
 ```
 
-###### 1.5 字符串尾部追加
+###### 1.5 字符串增
 
-* +=运算符法（推荐）
+* 尾部增
 
-```c++
-#include <iostream>
-#include <string>
-using namespace std;
+  * +=运算符法（推荐）
 
-int main() {
-    string str = "123";
-    str += "456";
-    cout << str << endl; // 123456
-    
-    return 0;
-}
-```
+  ```c++
+  #include <iostream>
+  #include <string>
+  using namespace std;
+  
+  int main() {
+      string str = "123";
+      str += "456";
+      cout << str << endl; // 123456
+      
+      return 0;
+  }
+  ```
 
-* append函数法
+  * append函数法
 
-```c++
-#include <iostream>
-#include <string>
-using namespace std;
+  ```c++
+  #include <iostream>
+  #include <string>
+  using namespace std;
+  
+  int main() {
+      string str = "123";
+      str.append("456");
+      cout << str << endl; // 123456
+      
+      return 0;
+  }
+  ```
 
-int main() {
-    string str = "123";
-    str.append("456");
-    cout << str << endl; // 123456
-    
-    return 0;
-}
-```
-
-###### 1.6 字符串头部或中间插入
+* 头部增、中间增
 
 在下标为index处（包含）插入字符或字符串。
 
@@ -110,8 +112,10 @@ using namespace std;
 
 int main() {
     string str = "123";
+  
     str.insert(0, "0");
     cout << str << endl; // 0123
+  
     str.insert(4, "456");
     cout << str << endl; // 0123456
     
@@ -119,7 +123,9 @@ int main() {
 }
 ```
 
-###### 1.7 字符串删除
+###### 1.6 字符串删
+
+* 尾部删、头部删、中间删
 
 从下标为index处（包含）开始删除length个字符。
 
@@ -137,9 +143,9 @@ int main() {
 }
 ```
 
-###### 1.8 截取子字符串
+###### 1.7 字符串改
 
-从下标为index处（包含）开始截取length个字符作为子字符串。
+从下标为index处（包含）开始length个字符被替换为xxx。
 
 ```c++
 #include <iostream>
@@ -148,14 +154,31 @@ using namespace std;
 
 int main() {
     string str = "123";
-    string sub_str = str.substr(1, 2);
-    cout << sub_str << endl; // 23
+    str.replace(str.find("2"), 2, "4");
+    cout << str << endl; // 14
     
     return 0;
 }
 ```
 
-###### 1.9 查找index
+###### 1.8 字符串查
+
+* 查某个下标处的字符
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "123";
+    cout << str[0] << endl; // 1
+    
+    return 0;
+}
+```
+
+* 查某个字符或子字符串的下标
 
 从下标为index处（包含，默认为0）开始查找某个字符或子字符串在字符串中第一次出现时的下标。
 
@@ -213,7 +236,25 @@ int main() {
 }
 ```
 
-###### 1.10 字符串的遍历
+* 截取子字符串
+
+从下标为index处（包含）开始截取length个字符作为子字符串。
+
+```c++
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str = "123";
+    string sub_str = str.substr(1, 2);
+    cout << sub_str << endl; // 23
+    
+    return 0;
+}
+```
+
+###### 1.9 字符串的遍历
 
 * for循环遍历法（推荐）
 
